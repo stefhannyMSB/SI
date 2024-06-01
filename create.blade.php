@@ -4,70 +4,113 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-secondary">Create Data Pegawai</h6>
+                    <h6 class="m-0 font-weight-bold text-secondary">Create Data Walimurid</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <form action="{{ route('pegawai.store') }}" method="POST">
+                        <form action="{{ route('walimurid.store') }}" method="POST">
                             @csrf
                             <div class="row mx-2 my-2">
                                 <div class="table">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" name="nama" id="nama" class="form-control" placeholder=""
-                                        aria-label="First">
-                                </div>
-                                <br>
-                                <div class="table">
-                                    <label for="tempat_lahir">Tempat Lahir</label>
-                                    <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control" placeholder=""
-                                        aria-label="First">
-                                </div>
-                                <br>
-                                <div class="table">
-                                    <label for="tgl_lahir">Tanggal Lahir</label>
-                                    <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control" placeholder=""
-                                        aria-label="First">
-                                </div>
-                                <br>
-                                <div class="table">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" name="alamat" id="alamat" class="form-control" placeholder=""
-                                        aria-label="First">
-                                </div>
-                                <br>
-                                <div class="table">
-                                    <label for="no_telp">No. Telpon</label>
-                                    <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder=""
-                                        aria-label="First">
-                                </div>
-                                <br>
-                                <div class="table">
-                                    <label for="agama">Agama</label>
-                                    <select name="agama" id="agama" class="form-control">
-                                        <option value="Pilih">-- Pilih --</option>
-                                        <option value="Islam">Islam</option>
-                                        <option value="Kristen">Kristen</option>
-                                        <option value="Katholik">katholik</option>
-                                        <option value="Hindu">Hindu</option>
-                                        <option value="Budha">Budha</option>
+                                    <label for="id_murid">Nama Murid</label>
+                                    <select class="form-control" name="id_murid" id="id_murid">
+                                        <option hidden>Pilih</option>
+                                        @foreach ($murid as $item)
+                                            <option value="{{ $item->id_murid }}"
+                                                @if (old('id_murid') == $item->id_murid) selected @endif>{{ $item->nama }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <br>
                                 <div class="table">
-                                    <label for="jabatan">Jabatan</label>
-                                    <select name="jabatan" id="jabatan" class="form-control">
-                                        <option value="Pilih">-- Pilih --</option>
-                                        <option value="Kepala Sekolah">Kepala Sekolah</option>
-                                        <option value="Wakil Kepala Sekolah">Wakil Kepala Sekolah</option>
-                                        <option value="Kepala Jurusan">Kepala Jurusan</option>
-                                        <option value="Guru">Guru</option>
-                                        <option value="Pustakawan">Pustakawan</option>
-                                        <option value="Tata Usaha">Tata Usaha</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="Cleaning Service">Cleaning Service</option>
-                                        <option value="Layanan Teknis">Layanan Teknis</option>
-
-                                    </select>
+                                    <label for="nama_ibu">Nama Ibu</label>
+                                    <input type="text" name="nama_ibu" id="nama_ibu" class="form-control" placeholder=""
+                                        aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="pekerjaan_ibu">Pekerjaan Ibu</label>
+                                    <input type="text" name="pekerjaan_ibu" id="pekerjaan_ibu"class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="penghasilan_ibu">Penghasilan Ibu</label>
+                                    <input type="text" name="penghasilan_ibu" id="penghasilan_ibu" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="alamat_ibu">Alamat Ibu</label>
+                                    <input type="text" name="alamat_ibu" id="alamat_ibu" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="telp_ibu">Telp Ibu</label>
+                                    <input type="text" name="telp_ibu" id="telp_ibu" class="form-control" placeholder=""
+                                        aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="nama_ayah">Nama Ayah</label>
+                                    <input type="text" name="nama_ayah" id="nama_ayah" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="pekerjaan_ayah">Pekerjaan Ayah</label>
+                                    <input type="text" name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="penghasilan_ayah">Penghasilan Ayah</label>
+                                    <input type="text" name="penghasilan_ayah" id="penhasilan_ayah" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="alamat_ayah">Alamat Ayah</label>
+                                    <input type="text" name="alamat_ayah" id="alamat_ayah" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="telp_ayah">Telp Ayah</label>
+                                    <input type="text" name="telp_ayah" id="telp_ayah" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="nama_wali">Nama Wali</label>
+                                    <input type="text" name="nama_wali" id="nama_wali" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="pekerjaan_wali">pekerjaan Wali</label>
+                                    <input type="text" name="pekerjaan_wali" id="pekerjaan_wali" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="penghasilan_Wali">Penghasilan Wali</label>
+                                    <input type="text" name="penghasilan_Wali" id="penghasilan_wali"
+                                        class="form-control" placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="alamat_wali">Alamat Wali</label>
+                                    <input type="text" name="alamat_wali" id="alamat_wali" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <br>
+                                <div class="table">
+                                    <label for="telp_wali">Telp Wali</label>
+                                    <input type="text" name="telp_wali" id="telp_wali" class="form-control"
+                                        placeholder="" aria-label="First">
                                 </div>
                                 <br>
                                 <div class="table">

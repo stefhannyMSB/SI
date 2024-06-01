@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row mx-3 my-1">
-        <h2 class="text-dark">DATA PEGAWAI</h2>
+        <h2 class="text-dark">DATA WALIMURID</h2>
     </div>
     {{-- alert --}}
     @if (Session::has('success'))
@@ -19,9 +19,9 @@
     </script>
     <div class="row">
         <div class="col-md">
-            <a href="{{ route('pegawai.create') }}" class="btn btn-dark btn-sm mb-2 mx-3"><i
+            <a href="{{ route('walimurid.create') }}" class="btn btn-dark btn-sm mb-2 mx-3"><i
                     class="fa fa-users"aria-hidden="true"></i>&nbsp;Tambah Data</a>
-            <a href="{{ route('pegawai.report') }}" target="_blank" class="btn btn-success btn-sm mb-2"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Cetak
+            <a href="#" class="btn btn-success btn-sm mb-2"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Cetak
                 Data</a>
             <div class="card shadow py-2 px-2">
                 <div class="card-header my-1 mx-1">
@@ -29,31 +29,50 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th sfcope="col">Nama Pegawai</th>
-                                <th scope="col">Tempat Lahir</th>
-                                <th scope="col">Tanggal Lahir</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">No.Telpon</th>
-                                <th scope="col">Agama</th>
-                                <th scope="col">Jabatan</th>
+                                <th scope="col">Nama Murid</th>
+                                <th scope="col">Nama Ibu</th>
+                                <th scope="col">Pekerjaan Ibu</th>
+                                <th scope="col">Penhasilan Ibu</th>
+                                <th scope="col">Alamat Ibu</th>
+                                <th scope="col">Telfon ibu</th>
+                                <th scope="col">Nama Ayah</th>
+                                <th scope="col">Pekerjaan Ayah</th>
+                                <th scope="col">Penhasilan Ayah</th>
+                                <th scope="col">Alamat Ayah</th>
+                                <th scope="col">Telfon Ayah</th>
+                                <th scope="col">Nama Wali</th>
+                                <th scope="col">Pekerjaan Wali</th>
+                                <th scope="col">Penhasilan Wali</th>
+                                <th scope="col">Alamat Wali</th>
+                                <th scope="col">Telfon Wali</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pegawai as $pegawai)
+                            @foreach ($walimurid as $walimurid)
                                 <tr>
                                     <td class="align-middle">{{ $loop->index + 1 }}</td>
-                                    <td class="align-middle">{{ $pegawai->nama }}</td>
-                                    <td class="align-middle">{{ $pegawai->tempat_lahir }}</td>
-                                    <td class="align-middle">{{ $pegawai->tgl_lahir }}</td>
-                                    <td class="align-middle">{{ $pegawai->alamat }}</td>
-                                    <td class="align-middle">{{ $pegawai->no_telp }}</td>
-                                    <td class="align-middle">{{ $pegawai->agama }}</td>
-                                    <td class="align-middle">{{ $pegawai->jabatan }}</td>
+                                    <td class="align-middle">{{ $walimurid->id_murid }}</td>
+                                    <td class="align-middle">{{ $walimurid->nama_ibu }}</td>
+                                    <td class="align-middle">{{ $walimurid->pekerjaan_ibu }}</td>
+                                    <td class="align-middle">{{ $walimurid->penghasilan_ibu }}</td>
+                                    <td class="align-middle">{{ $walimurid->alamat_ibu }}</td>
+                                    <td class="align-middle">{{ $walimurid->telp_ibu }}</td>
+                                    <td class="align-middle">{{ $walimurid->nama_ayah }}</td>
+                                    <td class="align-middle">{{ $walimurid->pekerjaan_ayah }}</td>
+                                    <td class="align-middle">{{ $walimurid->penghasilan_ayah }}</td>
+                                    <td class="align-middle">{{ $walimurid->alamat_ayah }}</td>
+                                    <td class="align-middle">{{ $walimurid->telp_ayah }}</td>
+                                    <td class="align-middle">{{ $walimurid->nama_wali }}</td>
+                                    <td class="align-middle">{{ $walimurid->pekerjaan_wali }}</td>
+                                    <td class="align-middle">{{ $walimurid->penghasilan_wali }}</td>
+                                    <td class="align-middle">{{ $walimurid->alamat_wali }}</td>
+                                    <td class="align-middle">{{ $walimurid->telp_wali }}</td>
+
                                     <td class="align-middle">
                                         {{-- <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{route(pegawai.edit)}}" type="button" class="btn btn-warning">Update</a>
-                                            <form action="{{ route('pegawai.destroy', $pegawai->id_pegawai) }}" method="POST"
+                                            <a href="{{route(walimurid.edit)}}" type="button" class="btn btn-warning">Update</a>
+                                            <form action="{{ route('walimurid.destroy', $walimurid->id_walimurid) }}" method="POST"
                                                 class="btn btn-danger"
                                                 onsubmit="return confirm('Apakah Anda yakin ingin menghapus ini?')">
                                                 @csrf
@@ -62,9 +81,9 @@
                                             </form>
                                         </div> --}}
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('pegawai.edit', $pegawai->id_pegawai) }}" type="button"
+                                            <a href="{{ route('walimurid.edit', $walimurid->id_walimurid) }}" type="button"
                                                 class="btn btn-warning">Update</a>
-                                            <form action="{{ route('pegawai.destroy', $pegawai->id_pegawai) }}" method="POST">
+                                            <form action="{{ route('walimurid.destroy', $walimurid->id_walimurid) }}" method="POST">
                                                 {{-- cross site ruquest forgery memverifikasi bahwa pengguna yang membuat permintaan --}}
                                                 @csrf
                                                 @method('delete')
