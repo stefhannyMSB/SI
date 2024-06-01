@@ -1,31 +1,55 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-dark">Tambah Data Mata Pelajaran</h6>
+                    <h6 class="m-0 font-weight-bold text-secondary">Tambah Data Siswa</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <form action="{{ route('matapelajaran.store') }}" method="POST">
+                        <form action="{{ route('murid.store') }}" method="POST">
                             @csrf
                             <div class="row mx-2 my-2">
                                 <div class="table">
-                                    <label for="matapelajaran">Mata Pelajaran</label>
-                                    <input type="text" name="pelajaran" id="matapelajaran" class="form-control" placeholder=""
+                                    <label for="NIS">NIS</label>
+                                    <input type="text" name="NIS" id="NIS" class="form-control" placeholder=""
                                         aria-label="First">
                                 </div>
-                                <br>
                                 <div class="table">
-                                    <label for="pembelajaran">Jenis Pembelajaran</label>
-                                    <select name="pembelajaran" id="pembelajaran" class="form-control">
-                                        <option value="--Pilih--">--Pilih--</option>
-                                        <option value="Normatif">Normatif</option>
-                                        <option value="Adaptif">Adaptif</option>
-                                    </select>
+                                    <label for="nama">Nama</label>
+                                    <input type="text" name="nama" id="nama" class="form-control" placeholder=""
+                                        aria-label="First">
                                 </div>
+                                <div class="table">
+                                    <label for="tempat_lahir">Tempat Lahir</label>
+                                    <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <div class="table">
+                                    <label for="tgl_lahir">Tanggal Lahir</label>
+                                    <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control"
+                                        placeholder="" aria-label="First">
+                                </div>
+                                <div class="table">
+                                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                                            <option value="Pilih">Pilih</option>
+                                            <option value="Laki Laki">Laki Laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
+                                </div>
+                                <div class="table">
+                                        <label for="agama">Agama</label>
+                                        <select name="agama" id="agama" class="form-control">
+                                            <option value="Pilih">Pilih</option>
+                                            <option value="Islam">Islam</option>
+                                            <option value="Kristen">Kristen</option>
+                                            <option value="Katholik">katholik</option>
+                                            <option value="Hindu">Hindu</option>
+                                            <option value="Budha">Budha</option>
+                                        </select>
+                                    </div>
                                 <div class="table">
                                     <label for="id_jurusan">Jurusan</label>
                                     <select class="form-control" name="id_jurusan" id="id_jurusan">
@@ -38,38 +62,24 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <br>
                                 <div class="table">
-                                    <label for="id_guru">Guru Pengajar</label>
-                                    <select class="form-control" name="id_guru" id="id_guru">
-                                        <option hidden>Pilih Guru Pengajar</option>
-                                        <option disabled="disabled" default="true">Pilih Guru</option>
-                                        @foreach ($guru as $item)
-                                            <option value="{{ $item->id_guru }}"
-                                                @if (old('id_guru') == $item->id_guru) selected @endif>{{ $item->nama }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    <div class="form-group">
+                                        <label for="ekstrakurikuler">Ekstrakurikuler</label>
+                                        <select name="ekstrakurikuler" id="ekstrakurikuler" class="form-control">
+                                            <option value="Pilih">Pilih</option>
+                                            <option value="Olahraga">Olahraga</option>
+                                            <option value="Seni">Seni</option>
+                                            <option value="Musik">Musik</option>
+                                            <option value="Bahasa">Bahasa</option>
+                                            <option value="Sains">Sains</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <br>
-                                {{-- <div class="table">
-                                    <label for="id_tahun">Tahun Akademik</label>
-                                    <input type="year" name="id_tahun" class="form-control" placeholder=""
-                                        aria-label="First">
-                                </div> --}}
                                 <div class="table">
-                                    <label for="tahun">Tahun Akademik</label>
-                                    <select name="tahun" id="tahun" class="form-control" placeholder="" aria-label="First">
-                                      <?php
-                                      $currentYear = date('Y');
-                                      for ($year = $currentYear - 10; $year <= $currentYear + 10; $year++) {
-                                          echo "<option value='$year'>$year</option>";
-                                      }
-                                      ?>
-                                    </select>
-                                  </div>
+                                    <button type="submit" class="btn btn-dark">Save</button>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-dark">Save</button>
                         </form>
                     </div>
                 </div>
